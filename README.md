@@ -10,7 +10,7 @@ framework**: every test case lives in a JSON file per endpoint, and the same fil
 Adding a test case or a new endpoint needs **no Java changes**, only a JSON file.
 
 ## Requirements
-- Java 21 (`java -version`)
+- Java 25 (`java -version`)
 - Maven 3.9+ (`mvn -v`)
 
 ## Project layout
