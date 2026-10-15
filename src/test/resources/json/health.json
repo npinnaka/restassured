@@ -1,0 +1,8 @@
+{
+  "endpoint": { "method": "GET", "path": "/api/health" },
+  "cases": {
+    "public": {
+      "response": { "status": 200, "body": { "status": "UP" } }
+    }
+  }
+}

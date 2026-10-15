@@ -1,0 +1,40 @@
+{
+  "endpoint": {
+    "method": "POST",
+    "path": "/api/greeting",
+    "headers": { "Accept": "application/json", "X-Request-Source": "api-tests" }
+  },
+  "cases": {
+    "success": {
+      "auth": { "type": "basic", "username": "user", "password": "password" },
+      "headers": { "X-Correlation-Id": "test-123" },
+      "body": { "name": "World" },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "jsonPath": { "message": "Hello, World!", "requestedBy": "user" },
+        "schema": "json/schema/greeting-response-schema.json",
+        "body": { "message": "Hello, World!", "requestedBy": "user" }
+      }
+    },
+    "invalid": {
+      "auth": { "username": "user", "password": "password" },
+      "body": { "name": "" },
+      "response": { "status": 400 }
+    },
+    "forbidden": {
+      "auth": { "username": "guest", "password": "guest" },
+      "body": { "name": "World" },
+      "response": { "status": 403 }
+    },
+    "badCredentials": {
+      "auth": { "username": "user", "password": "wrong" },
+      "body": { "name": "World" },
+      "response": { "status": 401 }
+    },
+    "unauthorized": {
+      "body": { "name": "World" },
+      "response": { "status": 401, "headers": { "WWW-Authenticate": "Basic" } }
+    }
+  }
+}
